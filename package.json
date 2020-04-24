@@ -1,0 +1,21 @@
+{
+  "name": "dxc-tech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build *.html --public-url ./",
+    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrskytte/dxc-tech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrskytte/dxc-tech/issues"
+  },
+  "homepage": "https://github.com/mrskytte/dxc-tech#readme"
+}
