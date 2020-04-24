@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/mrskytte/dxc-tech/issues"
   },
-  "homepage": "https://github.com/mrskytte/dxc-tech#readme"
+  "homepage": "https://github.com/mrskytte/dxc-tech#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.3.1",
+    "sass": "^1.26.5"
+  }
 }
