@@ -1,0 +1,12 @@
+@font-face {
+  font-family: dxcFont;
+  src: url("/static/dxc-font/GT-Walsheim-Pro-Regular.woff2");
+}
+@font-face {
+  font-family: dxcFontBold;
+  src: url("/static/dxc-font/GT-Walsheim-Pro-Bold.woff2");
+}
+
+* {
+  font-family: dxcFont, Arial, Helvetica, sans-serif;
+}

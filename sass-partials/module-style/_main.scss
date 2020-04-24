@@ -1,0 +1,41 @@
+@use '../base-style/colors';
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+  height: 90vh;
+  h1,
+  h2,
+  #testimonials {
+    grid-column: auto / span 2;
+    justify-self: start;
+    width: 80%;
+    margin: auto;
+  }
+  h1 {
+    margin-top: 3em;
+    color: colors.$accent;
+  }
+  #testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2em;
+  }
+  .keypoints {
+    height: 15vh;
+    width: 80%;
+    line-height: 2em;
+  }
+  form {
+    height: 50vh;
+    width: 90%;
+    background-color: colors.$primary;
+  }
+  #quote {
+    align-self: center;
+    width: 60%;
+    margin: auto;
+    line-height: 2.5em;
+  }
+}
