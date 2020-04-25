@@ -4,15 +4,17 @@ import "@babel/polyfill";
 
 const endpoint = "https://spring20-14d2.restdb.io/rest/userinformation";
 const apiKey = "5e957ac5436377171a0c2343";
+const userData = [];
 
 window.addEventListener("load", init);
 
 function init() {
   if (checkLocalStorage()) {
-    sendToAssetPage();
+    // sendToAssetPage();
     return;
   }
   getUserData();
+  prepareEmailInput();
 }
 
 // TODO LANDING PAGE
@@ -30,9 +32,19 @@ async function getUserData() {
     },
   });
   const response = await data.json();
-  console.log(response);
+  storeUserData(response);
 }
 //      STORE THEM IN AN ARRAY OF OBJECTS WITH NAME AND EMAIL
+function storeUserData(users) {
+  users.forEach((user) => {
+    const thisUser = {
+      name: user.firstname,
+      email: user.email,
+    };
+    userData.push(thisUser);
+    console.log(userData);
+  });
+}
 
 // CHECK IF USER HAS USED PAGE BEFORE
 //      CHECK localSTORAGE
@@ -42,7 +54,6 @@ function checkLocalStorage() {
   }
   return false;
 }
-//      CHECK EMAIL AGAINST THE ARRAY TO SEE IF IT'S REGISTERED
 
 // IF USER IS REGISTERED
 //      SEND USER TO ASSET PAGE
@@ -57,8 +68,26 @@ function checkLocalStorage() {
 //      CHECK EMAIL INPUTS ENDING TO GUESS IF IT'S WORK EMAIL OR NOT
 //          IF EMAIL LOOKS TO BE PRIVATE DISPLAY "WARNING" MESSAGE
 //      CHECK EMAIL INPUT ON WHETHER IT'S PRESENT IN DATABASE
+function prepareEmailInput() {
+  document
+    .querySelector("[type=email")
+    .addEventListener("input", checkEmailInput);
+}
+
+function checkEmailInput(thisEmail) {
+  console.log(thisEmail.target.value);
+  let isPresent = userData.find((e) => e.email === thisEmail.target.value);
+  console.log(isPresent);
+  if (isPresent) {
+    setLocalStorageAuth();
+    console.log("Email exists in database");
+    // INSERT FUNCTION THE SEND WELCOME USER BACK
+    console.log(`Welcome back ${isPresent.name}`);
+  }
+}
 //      CREATE AN OBJECT MATCHING OUR DATABASE TO STORE THE FORM DATA
 //      SEND THAT DATA TO DATABASE
+
 async function postUsers(payload) {
   const postData = JSON.stringify(payload);
   const data = await fetch(endpoint, {
@@ -78,4 +107,8 @@ async function postUsers(payload) {
 
 function sendToAssetPage() {
   console.log("Send to asset page");
+}
+
+function setLocalStorageAuth() {
+  localStorage.setItem("auth", "true");
 }
