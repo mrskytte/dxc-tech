@@ -70,7 +70,7 @@ async function postUsers(payload) {
     },
     body: postData,
   });
-  const response = data.json();
+  const response = await data.json();
   console.log(response);
 }
 //      SHOW LOADER
