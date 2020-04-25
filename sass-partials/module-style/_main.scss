@@ -28,9 +28,17 @@ main {
     line-height: 2em;
   }
   form {
+    margin: auto;
+    justify-content: center;
     height: 50vh;
-    width: 90%;
+    width: 60%;
     background-color: colors.$primary;
+    display: flex;
+    flex-direction: column;
+    label {
+      display: flex;
+      flex-direction: column;
+    }
   }
   #quote {
     align-self: center;
