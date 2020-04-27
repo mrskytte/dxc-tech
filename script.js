@@ -103,14 +103,17 @@ function checkEmailInput(thisEmail) {
 }
 //      CREATE AN OBJECT MATCHING OUR DATABASE TO STORE THE FORM DATA
 
-const payload = {
-  firstname: form.elements.firstname.value,
-  lastname: form.elements.lastname.value,
-  email: form.elements.email.value,
-  company: form.elements.company.value,
-  jobtitle: form.elements.jobtitle.value,
-  country: form.elements.country.value,
-};
+function storeData() {
+  const payload = {
+    fullname: form.elements.fullname.value,
+    email: form.elements.email.value,
+    company: form.elements.company.value,
+    jobtitle: form.elements.jobtitle.value,
+    country: form.elements.country.value,
+  };
+}
+
+document.querySelector("[type=submit]").addEventListener("click", storeData);
 
 //      SEND THAT DATA TO DATABASE
 
@@ -127,7 +130,9 @@ async function postUsers(payload) {
   });
   const response = await data.json();
   console.log(response);
+  console.log(payload);
 }
+
 //      SHOW LOADER
 //      AFTER DATA IS SUBMITTED SEND USER TO ASSET PAGE
 
