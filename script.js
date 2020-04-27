@@ -6,6 +6,11 @@ const endpoint = "https://spring20-14d2.restdb.io/rest/userinformation";
 const apiKey = "5e957ac5436377171a0c2343";
 const userData = [];
 
+const form = document.querySelector("form");
+window.form = form;
+const elements = form.elements;
+window.elements = elements;
+
 window.addEventListener("load", init);
 
 function init() {
@@ -63,7 +68,18 @@ function checkLocalStorage() {
 //      HIDE PRELOADER AND SHOW PAGE
 
 // HANDLE FORM DATA
+
 //      CHECK FORM ENTRIES VALIDITY
+
+const formIsValid = form.checkValidity();
+if (formIsValid) {
+  console.log("Submit ready");
+} else {
+  if (!form.elements.firstname.checkValidity()) {
+    console.log("First name is invalid");
+  }
+}
+
 //      SPLIT NAME INTO FIRST AND LAST NAME
 //      CHECK EMAIL INPUTS ENDING TO GUESS IF IT'S WORK EMAIL OR NOT
 //          IF EMAIL LOOKS TO BE PRIVATE DISPLAY "WARNING" MESSAGE
@@ -86,6 +102,16 @@ function checkEmailInput(thisEmail) {
   }
 }
 //      CREATE AN OBJECT MATCHING OUR DATABASE TO STORE THE FORM DATA
+
+const payload = {
+  firstname: form.elements.firstname.value,
+  lastname: form.elements.lastname.value,
+  email: form.elements.email.value,
+  company: form.elements.company.value,
+  jobtitle: form.elements.jobtitle.value,
+  country: form.elements.country.value,
+};
+
 //      SEND THAT DATA TO DATABASE
 
 async function postUsers(payload) {
