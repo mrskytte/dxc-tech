@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel asset.html --open",
     "build": "parcel build *.html --public-url ./",
     "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist"
   },
