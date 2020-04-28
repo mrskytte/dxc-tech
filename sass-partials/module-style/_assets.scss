@@ -45,7 +45,9 @@ nav {
   }
   h2#subtitle {
     font-size: 1.8em;
-    margin-bottom: 3em;
+    margin-bottom: 1.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 0.2em solid colors.$accent;
   }
   #summary {
     font-size: 1.5em;
@@ -57,7 +59,7 @@ nav {
     line-height: 1.8em;
   }
   section {
-    margin-top: 8em;
+    padding-top: 8em;
     h2 {
       font-size: 2em;
       margin-bottom: 0.5em;
@@ -96,5 +98,27 @@ nav {
       border-radius: 50%;
       background-color: black;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #asset-body {
+    display: block;
+  }
+  nav {
+    position: absolute;
+    transform: translateX(-80vw);
+    width: 80vw;
+    margin: 0;
+    .large-screen {
+      display: none;
+    }
+    li {
+      margin-top: 0;
+      padding-top: 2.5em;
+    }
+  }
+  #asset-main {
+    overflow-y: visible;
   }
 }
