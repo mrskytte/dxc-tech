@@ -14,27 +14,33 @@
         <img src="./static/logo/dxc_logo_vt_wht_300.png" alt="DXC Logg" />
       </div>
       <ul id="nav-ul">
-        <li class="navpoints"><a href="#section1">Overview</a></li>
-        <li class="navpoints"><a href="#section2">Simple set up and use</a></li>
-        <li class="navpoints">
+        <li class="navpoints" data-name="section1">
+          <a href="#section1">Overview</a>
+        </li>
+        <li class="navpoints" data-name="section2">
+          <a href="#section2">Simple set up and use</a>
+        </li>
+        <li class="navpoints" data-name="section3">
           <a href="#section3">Flexible data distribution methods</a>
         </li>
-        <li class="navpoints">
+        <li class="navpoints" data-name="section4">
           <a href="#section4">Structured data access and rights</a>
         </li>
-        <li class="navpoints">
-          <a href="#section5">Synchronizing data and creating new records</a>
+        <li class="navpoints" data-name="section5">
+          <a href="#section5">Flexible set up options</a>
         </li>
-        <li class="navpoints">
-          <a href="#section6">Importing and exporting GDM configurations</a>
+        <li class="navpoints" data-name="section6">
+          <a href="#section6">Synchronizing data and creating new records</a>
         </li>
-        <li class="navpoints">
-          <a href="#section7">Get a full oberview acress local companies</a>
+        <li class="navpoints" data-name="section7">
+          <a href="#section7">Importing and exporting GDM configurations</a>
         </li>
-        <li class="navpoints">
-          <a href="#section8">Flexible set up options</a>
+        <li class="navpoints" data-name="section8">
+          <a href="#section8">Get a full oberview acress local companies</a>
         </li>
-        <li class="navpoints"><a href="#section9">Contact information</a></li>
+        <li class="navpoints" data-name="section9">
+          <a href="#section9">Contact information</a>
+        </li>
       </ul>
     </nav>
     <main id="asset-main">
@@ -66,6 +72,34 @@
             full control of your critical global business data.<br /><br />
             With DXC Global Data Management, you can:
           </p>
+          <ul>
+            <li class="overview-points">
+              <span class="bold"
+                >Ensure data control, integrity & transparency:</span
+              >
+              With structured data governance and distribution across your
+              business
+            </li>
+            <li class="overview-points">
+              <span class="bold">Balance corporate and subsidiary needs:</span>
+              Using flexible data access rights to enable local needs &
+              requirements
+            </li>
+            <li class="overview-points">
+              <span class="bold"
+                >Improve operational efficiency and insight:</span
+              >
+              Reducing manual data entry and double data entry, saving time and
+              avoiding errors
+            </li>
+            <li class="overview-points">
+              <span class="bold"
+                >Define a baseline for accurate BI and reporting:</span
+              >
+              With business decisions and reports that are based on accurate,
+              valid global data
+            </li>
+          </ul>
         </section>
         <section id="section2">
           <h2 class="sectiontitle">Simple set up and use</h2>
@@ -73,13 +107,25 @@
             With DXC Global Data Management, you can define a single Global Data
             Account that acts as a data warehouse for all the master data that
             you want to replicate to other companies and locations in your
-            organization. These companies can be added to Company Groups that
-            are connected to one or more records in the Global Data Account.
+            organization. <br /><br />These companies can be added to Company
+            Groups that are connected to one or more records in the Global Data
+            Account.<br /><br />
             Once a company is added to a Company Group, you can synchronize
             these specific records – including master data, reference data and
             parameters – with that company using a number of push and pull
-            distribution methods.
+            distribution methods.<br />
+            You can also create new companies that will be populated with a
+            specific set of base data from the Global Data Account when you add
+            them to an existing company group.
           </p>
+          <img
+            src="./static/images/figure1.png"
+            alt="Figure 1. Adding companies to Company Groups for data synchronization."
+          />
+          <figcaption>
+            <span class="bold">Figure 1.</span> Adding companies to Company
+            Groups for data synchronization.
+          </figcaption>
         </section>
         <section id="section3">
           <h2 class="sectiontitle">Flexible data distribution methods</h2>
@@ -89,24 +135,35 @@
             when needed, or sent via batch jobs during off hours to optimise
             your system performance.
           </p>
+          <img
+            src="./static/images/figure2.png"
+            alt="Figure 2. Share, synchronize and
+            manage your global business data
+            across your whole organization."
+          />
+          <figcaption>
+            <span class="bold">Figure 2.</span> Share, synchronize and manage
+            your global business data across your whole organization.
+          </figcaption>
         </section>
         <section id="section4">
           <h2 class="sectiontitle">Structured data access and rights</h2>
           <p>
             In addition to defining which data each of your companies or local
             subsidiaries can see, you can also control what they can do with the
-            data locally, based on their company type and business focus. For
-            example, you can define that local manufacturing companies get only
-            production- related data and local sales companies receive only
-            sales-related items. For each company, you can define which
-            information, settings, values and fields they can see, which they
-            can define or modify, and which they can delete. This allows local
-            companies to make the necessary modifications they need to meet
-            local requirements, while still ensuring transparency, consistency
-            and governance when working with business data across your
-            organization. Local organizations can, for example, implement
-            relevant VAT set-ups, or define specific payment- and
-            delivery-terms.
+            data locally, based on their company type and business focus.
+            <br /><br />For example, you can define that local manufacturing
+            companies get only production- related data and local sales
+            companies receive only sales-related items.<br /><br />
+            For each company, you can define which information, settings, values
+            and fields they can see, which they can define or modify, and which
+            they can delete.<br /><br />
+            This allows local companies to make the necessary modifications they
+            need to meet local requirements, while still ensuring transparency,
+            consistency and governance when working with business data across
+            your organization.<br /><br />
+            Local organizations can, for example, implement relevant VAT
+            set-ups, or define specific payment- and delivery-terms.
           </p>
         </section>
         <section id="section5">
@@ -116,6 +173,86 @@
             consist of three Fast Tabs for setting up tables, setting up fields,
             and defining relationships between tables.
           </p>
+          <img
+            src="./static/images/figure3.png"
+            alt="Figure 3. Simple set up in a single
+            management form."
+          />
+          <figcaption>
+            <span class="bold">Figure 3.</span> Simple set up in a single
+            management form.
+          </figcaption>
+          <h3>Table set-up</h3>
+          <p>
+            DXC Global Data Management offers full data management flexibility
+            in any table in your system. Here you can, among other things:
+          </p>
+          <ul>
+            <li>Add a new table to the Global Data Management set-up</li>
+            <li>
+              Define where the data in the table is maintained, and if local
+              entities can create new records, or edit existing records, in the
+              global data account
+            </li>
+            <li>
+              Define settings for global and local deletion – with options
+              ranging from denial of deletion to a full cascade deletion in all
+              companies
+            </li>
+            <li>
+              Duplicate attachments from the global data account to the local
+              account
+            </li>
+          </ul>
+          <img
+            src="./static/images/figure4.png"
+            alt="Figure 4. Add new tables to the
+            Global Record and define
+            maintenance- and deletion-rights."
+          />
+          <figcaption>
+            <span class="bold">Figure 4.</span> Add new tables to the Global
+            Record and define maintenance- and deletion-rights.
+          </figcaption>
+          <h3>Field set-up</h3>
+          <p>
+            Here you can, among other things, define:
+          </p>
+          <ul>
+            <li>Which fields are to be synchronized with local companies</li>
+            <li>
+              Which fields are shown in the push/pull form
+            </li>
+            <li>
+              If a field can be altered in the local company, or is only
+              editable from the global account
+            </li>
+          </ul>
+          <img
+            src="./static/images/figure5.png"
+            alt="Figure 5. Define which field data is
+          distributed and how and when it
+          can be deleted."
+          />
+          <figcaption>
+            <span class="bold">Figure 5.</span> Define which field data is
+            distributed and how and when it can be deleted.
+          </figcaption>
+          <h3>Relations</h3>
+          <p>
+            Here you can define processes around replication of related tables
+            and ensure that related tables are synchronized in the correct
+            sequence.
+          </p>
+          <img
+            src="./static/images/figure6.png"
+            alt="Figure 6. Set up how related tables
+            are replicated."
+          />
+          <figcaption>
+            <span class="bold">Figure 6.</span> Set up how related tables are
+            replicated.
+          </figcaption>
         </section>
         <section id="section6">
           <h2 class="sectiontitle">
@@ -130,6 +267,21 @@
             existing global data records if this is allowed in the Global Data
             Management setup.
           </p>
+          <img
+            src="./static/images/figure7.png"
+            alt="Figure 7. Accessing Global Data
+            Management capabilities from the
+            ribbon."
+          />
+          <figcaption>
+            <span class="bold">Figure 7.</span> Accessing Global Data Management
+            capabilities from the ribbon.
+          </figcaption>
+          <p>
+            In addition, you can define batch jobs that push records from
+            multiple tables at a pre- set time that is more convenient for daily
+            business processes and workloads.
+          </p>
         </section>
         <section id="section7">
           <h2 class="sectiontitle">
@@ -140,6 +292,16 @@
             an XML file. This can then be used for backup purposes, or for
             importing into other systems.
           </p>
+          <img
+            src="./static/images/figure8.png"
+            alt="Figure 8. Simple import and export
+            of your Global Data Management
+            configurations."
+          />
+          <figcaption>
+            <span class="bold">Figure 8.</span> Simple import and export of your
+            Global Data Management configurations.
+          </figcaption>
         </section>
         <section id="section8">
           <h2 class="sectiontitle">
@@ -151,6 +313,17 @@
             tables have been set up for a selected company and see details of
             the selection set-up for each table.
           </p>
+          <img
+            src="./static/images/figure9.png"
+            alt="Figure 8. Always have a full
+            overview of what is being
+            synchronized across your
+            companies."
+          />
+          <figcaption>
+            <span class="bold">Figure 9.</span> Always have a full overview of
+            what is being synchronized across your companies.
+          </figcaption>
         </section>
         <section id="section9">
           <h2 class="sectiontitle">
