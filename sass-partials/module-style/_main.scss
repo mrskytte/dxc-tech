@@ -1,5 +1,21 @@
 @use '../base-style/colors';
 
+body {
+  background-image: url("images/dxc_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80%;
+}
+
+#logo {
+  background-color: colors.$secondary;
+  padding: 0.6em;
+}
+
+.logo {
+  height: 2.5em;
+}
+
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,14 +46,26 @@ main {
   form {
     margin: auto;
     justify-content: center;
-    height: 50vh;
-    width: 60%;
-    background-color: colors.$primary;
+    height: 60vh;
+    width: 55%;
+    background-color: colors.$form;
     display: flex;
     flex-direction: column;
+    margin-bottom: 6em;
+
     label {
       display: flex;
       flex-direction: column;
+      width: 80%;
+      height: 60px;
+      margin-left: 3em;
+      margin-right: 3em;
+      font-size: 0.8em;
+    }
+    input {
+      border: none;
+      border-radius: 0.5em;
+      height: 3em;
     }
   }
   #quote {
