@@ -78,6 +78,23 @@
       height: 3em;
       padding-left: 1em;
     }
+    #warning {
+      visibility: visible;
+      font-size: 0.8em;
+      text-indent: 1em;
+      button {
+        border: none;
+        opacity: 0.4;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &.no-problem {
+        visibility: hidden;
+      }
+    }
 
     hr {
       width: 80%;

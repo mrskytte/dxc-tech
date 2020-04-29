@@ -5,6 +5,7 @@ import "@babel/polyfill";
 const endpoint = "https://spring20-14d2.restdb.io/rest/userinformation";
 const apiKey = "5e957ac5436377171a0c2343";
 const userData = [];
+const privateEmails = ["hotmail", "gmail", "yahoo", "live", "icloud"];
 
 const form = document.querySelector("form");
 window.form = form;
@@ -14,10 +15,10 @@ window.elements = elements;
 window.addEventListener("load", init);
 
 function init() {
-  if (checkLocalStorage()) {
-    sendToAssetPage();
-    return;
-  }
+  // if (checkLocalStorage()) {
+  //   sendToAssetPage();
+  //   return;
+  // }
   getUserData();
   prepareEmailInput();
 }
@@ -61,63 +62,72 @@ function checkLocalStorage() {
   return false;
 }
 
-// IF USER IS REGISTERED
-//      SEND USER TO ASSET PAGE
-//          (MAYBE SHOW MODAL FIRST SAYING WELCOME BACK??)
-
-// IF USER ISN'T REGISTERED
-//      HIDE PRELOADER AND SHOW PAGE
-
-// HANDLE FORM DATA
-
-//      CHECK FORM ENTRIES VALIDITY
-
-// const formIsValid = form.checkValidity();
-// if (formIsValid) {
-//   console.log("Submit ready");
-// } else {
-//   if (!form.elements.firstname.checkValidity()) {
-//     console.log("First name is invalid");
-//   }
-// }
-
-//      SPLIT NAME INTO FIRST AND LAST NAME
-
-//      CHECK EMAIL INPUTS ENDING TO GUESS IF IT'S WORK EMAIL OR NOT
-//          IF EMAIL LOOKS TO BE PRIVATE DISPLAY "WARNING" MESSAGE
-//      CHECK EMAIL INPUT ON WHETHER IT'S PRESENT IN DATABASE
 function prepareEmailInput() {
+  document
+    .querySelector("#warning button")
+    .addEventListener("click", hideMailWarning);
   document
     .querySelector("[type=email")
     .addEventListener("input", checkEmailInput);
 }
 
 function checkEmailInput(thisEmail) {
-  console.log(thisEmail.target.value);
-  let isPresent = userData.find((e) => e.email === thisEmail.target.value);
-  console.log(isPresent);
+  let email = thisEmail.target.value;
+  let emailEnding = email.substring(
+    email.indexOf("@") + 1,
+    email.lastIndexOf(".")
+  );
+  if (privateEmails.includes(emailEnding)) {
+    displayMailWarning();
+  }
+  console.log(emailEnding);
+  let isPresent = userData.find((e) => e.email === email);
   if (isPresent) {
     setLocalStorageAuth(isPresent._id);
   }
 }
-//      CREATE AN OBJECT MATCHING OUR DATABASE TO STORE THE FORM DATA
+
+function displayMailWarning() {
+  if (document.querySelector("#warning").dataset.valid !== "true") {
+    document.querySelector("#warning").classList.remove("no-problem");
+  }
+}
+function hideMailWarning() {
+  document.querySelector("#warning").classList.add("no-problem");
+  document.querySelector("#warning").dataset.valid = "true";
+}
+
+document.querySelector("[type=submit]").addEventListener("click", storeData);
 
 function storeData() {
+  console.log(" 🐷");
+  let fullname = splitName();
   const payload = {
-    fullname: form.elements.fullname.value,
+    firstname: fullname[0],
+    lastname: fullname[1],
     email: form.elements.email.value,
     company: form.elements.company.value,
     jobtitle: form.elements.jobtitle.value,
     country: form.elements.country.value,
     visits: 0,
   };
+  postUsers(payload);
 }
 
-document.querySelector("[type=submit]").addEventListener("click", storeData);
-
-//      SEND THAT DATA TO DATABASE
+function splitName() {
+  let name = form.elements.fullname.value;
+  let firstname = name.substring(0, name.indexOf(" "));
+  let lastname = name.substring(name.indexOf(" ") + 1, name.length);
+  if (!firstname) {
+    console.log(" 🦈");
+    firstname = lastname;
+    lastname = "N/A";
+  }
+  return [firstname, lastname];
+}
 
 async function postUsers(payload) {
+  console.log("called");
   const postData = JSON.stringify(payload);
   const data = await fetch(endpoint, {
     method: "post",
@@ -130,11 +140,8 @@ async function postUsers(payload) {
   });
   const response = await data.json();
   console.log(response);
-  console.log(payload);
+  setLocalStorageAuth(response._id);
 }
-
-//      SHOW LOADER
-//      AFTER DATA IS SUBMITTED SEND USER TO ASSET PAGE
 
 function sendToAssetPage() {
   console.log("Send to asset page");
