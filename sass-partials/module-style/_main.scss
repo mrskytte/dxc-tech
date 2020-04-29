@@ -1,5 +1,11 @@
 @use '../base-style/colors';
 
+.small-screen {
+  display: none;
+}
+#index-body {
+  position: relative;
+}
 #bg-image {
   background-image: url("images/dxc_background.jpg");
   background-repeat: no-repeat;
@@ -29,7 +35,6 @@
   margin-left: 160px;
   margin-right: 160px;
 
-  // height: 90vh;
   #first {
     height: 100vh;
     display: grid;
@@ -112,6 +117,7 @@
 
     hr {
       width: 80%;
+      margin-top: auto;
       margin-left: 3em;
       margin-right: 3em;
       margin-bottom: 2em;
@@ -131,12 +137,6 @@
       margin-bottom: 1em;
     }
   }
-  #quote {
-    align-self: center;
-    width: 60%;
-    margin: auto;
-    line-height: 2.5em;
-  }
 }
 
 #second {
@@ -153,12 +153,15 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
   .keypoints {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 80%;
     line-height: 2em;
     .icon {
       height: 40px;
+      margin: auto;
       margin-bottom: 40px;
-      margin-left: 70px;
     }
   }
 }
@@ -199,5 +202,99 @@
   .who {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #index-body {
+  }
+  .large-screen {
+    display: none;
+  }
+  #shade {
+    all: initial;
+    width: 0px;
+    height: auto;
+    border-top: 400px solid transparent;
+    border-bottom: 400px solid transparent;
+    border-left: 600px solid black;
+    position: absolute;
+    top: 6em;
+    right: 0;
+    top: -5em;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  #logo {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    background-color: colors.$secondary;
+    img {
+      height: 4vh;
+    }
+  }
+  .small-screen {
+    display: block;
+  }
+  #index-main {
+    width: 95%;
+    margin: auto;
+    hr {
+      height: 4px;
+      background-color: colors.$accent;
+      border: none;
+      margin: 4em 2em;
+    }
+    #first {
+      margin-top: 10vh;
+      height: auto;
+      display: block;
+      form {
+        box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
+        padding: 2em 0;
+      }
+      #check {
+        width: 70%;
+      }
+      h1 {
+        font-size: 1.4em;
+        padding: 1em 0 1em 1em;
+        color: colors.$primary;
+      }
+      h2 {
+        font-size: 1.4em;
+        padding: 0.5em 0 1em 1em;
+        color: colors.$accent;
+      }
+    }
+    #weprovide,
+    #testimonials {
+      display: block;
+      margin: auto;
+      .keypoints {
+        margin: auto;
+        margin-top: 2em;
+      }
+      h5 {
+        margin-left: 2em;
+      }
+      p {
+        margin-left: 1.6em;
+      }
+    }
+    #second {
+      margin: auto;
+    }
+    #third {
+      margin: auto;
+      margin-bottom: 3em;
+    }
+  }
+  footer {
+    font-size: 0.7em;
   }
 }
