@@ -9,7 +9,23 @@
     <script src="https://kea-alt-del.dk/dxc/login.js"></script>
   </head>
   <body id="asset-body">
-    <nav>
+    <div id="modal-bg">
+      <div id="modal">
+        <p>It does not look like you have access to this asset</p>
+        <a href="index.html" class="access">Get Access</a>
+        <hr />
+        <button class="signedup">Already signed up?</button>
+        <form action="">
+          <label for="modal-email" class="not-active"
+            >Business Email<input
+              type="email"
+              name="modal-email"
+              id="modal-email"
+          /></label>
+        </form>
+      </div>
+    </div>
+    <nav class="no-access">
       <div id="nav-logo" class="large-screen">
         <img src="./static/logo/dxc_logo_vt_wht_300.png" alt="DXC Logg" />
       </div>
@@ -43,7 +59,7 @@
         </li>
       </ul>
     </nav>
-    <main id="asset-main">
+    <main id="asset-main" class="no-access">
       <article>
         <h1 id="title">DXC Global Data Management</h1>
         <h2 id="subtitle">for Microsoft Dynamics 365</h2>

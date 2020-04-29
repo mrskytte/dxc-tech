@@ -1,9 +1,77 @@
 @use '../base-style/colors';
 
 #asset-body {
+  position: relative;
   display: flex;
   height: 100vh;
   scroll-behavior: smooth;
+}
+
+#modal-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparentize($color: colors.$secondary, $amount: 0.08);
+  #modal {
+    position: relative;
+    left: calc(50% - 15vw);
+    top: 10%;
+    height: 60vh;
+    width: 30vw;
+    background-color: colors.$form;
+    border-radius: 2px;
+    padding: 3em 2em 2em;
+  }
+  p {
+    font-size: 1.2em;
+    margin-bottom: 3em;
+  }
+  a.access {
+    width: 90%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    background-color: colors.$accent;
+    font-size: 1.5em;
+    padding: 0.7em 1em;
+  }
+  hr {
+    margin: 4em 0 1em;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 60px;
+    margin-left: 3em;
+    margin-right: 3em;
+    font-size: 0.9em;
+    visibility: visible;
+    transition: transform 0.5s;
+  }
+  input {
+    transition: background-color 0.5s;
+    border: none;
+    border-radius: 0.5em;
+    height: 3em;
+    padding-left: 1em;
+  }
+  .not-active {
+    visibility: hidden;
+    transform: translateY(1em);
+  }
+  button {
+    all: initial;
+    cursor: pointer;
+    margin-bottom: 1em;
+  }
+}
+
+.no-access {
+  filter: blur(4px);
+  z-index: -2;
 }
 
 nav {
