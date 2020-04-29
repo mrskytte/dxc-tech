@@ -1,16 +1,69 @@
 "use strict";
 import "@babel/polyfill";
+
 const endpoint = "https://spring20-14d2.restdb.io/rest/userinformation";
 const apiKey = "5e957ac5436377171a0c2343";
+const userData = [];
 
 window.addEventListener("load", init);
 
 function init() {
-  //   if (!checkLocalStorage()) {
-  // showModal();
-  //     return;
-  //   }
-  createIntersectionObserver();
+  if (checkLocalStorage()) {
+    hideModal();
+    createIntersectionObserver();
+    logUserVisit();
+    return;
+  }
+  getUserData();
+  activateModal();
+}
+
+async function logUserVisit() {
+  const user = await fetch(`${endpoint}/${localStorage.getItem("userID")}`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": apiKey,
+      "cache-control": "no-cache",
+    },
+  });
+  const response = await user.json();
+  response.visits++;
+  let postData = JSON.stringify(response);
+  const data = await fetch(`${endpoint}/${localStorage.getItem("userID")}`, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": apiKey,
+      "cache-control": "no-cache",
+    },
+    body: postData,
+  });
+}
+
+async function getUserData() {
+  const data = await fetch(`${endpoint}?max=100`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": apiKey,
+      "cache-control": "no-cache",
+    },
+  });
+  const response = await data.json();
+  storeUserData(response);
+}
+
+function storeUserData(users) {
+  users.forEach((user) => {
+    const thisUser = {
+      name: user.firstname,
+      email: user.email,
+      _id: user._id,
+    };
+    userData.push(thisUser);
+    console.log(userData);
+  });
 }
 
 function checkLocalStorage() {
@@ -18,6 +71,49 @@ function checkLocalStorage() {
     return true;
   }
   return false;
+}
+
+function hideModal() {
+  document.querySelector("#modal-bg").style.display = "none";
+  document.querySelector("nav").classList.remove("no-access");
+  document.querySelector("main").classList.remove("no-access");
+}
+
+function activateModal() {
+  document.querySelector("button").addEventListener("click", () => {
+    document.querySelector("label").classList.remove("not-active");
+    document.querySelector("input").focus();
+    document
+      .querySelector("[type=email")
+      .addEventListener("input", checkEmailInput);
+  });
+}
+
+function checkEmailInput(thisEmail) {
+  console.log(thisEmail.target.value);
+  let isPresent = userData.find((e) => e.email === thisEmail.target.value);
+  console.log(isPresent);
+  if (isPresent) {
+    setLocalStorageAuth(isPresent._id);
+    authorized(isPresent);
+  }
+}
+function setLocalStorageAuth(id) {
+  localStorage.setItem("auth", "true");
+  localStorage.setItem("userID", id);
+}
+
+function authorized(user) {
+  document.querySelector("input").style.backgroundColor =
+    "rgba(27, 168, 27, 0.5)";
+
+  setTimeout(() => {
+    document.querySelector("a").classList.add("not-active");
+    document.querySelector("p").textContent = `Welcome back ${user.name}`;
+  }, 250);
+  setTimeout(() => {
+    init();
+  }, 750);
 }
 
 function createIntersectionObserver() {
