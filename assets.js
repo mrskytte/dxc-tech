@@ -12,6 +12,7 @@ function init() {
     hideModal();
     createIntersectionObserver();
     logUserVisit();
+    prepareMenu();
     return;
   }
   getUserData();
@@ -146,7 +147,40 @@ function createIntersectionObserver() {
 
 function removeNavHighlight() {
   const navPoints = document.querySelectorAll(".navpoints a");
+  const navBtn = document.querySelector("#top-bar button");
   navPoints.forEach((navpoint) => {
     navpoint.style.color = "#fff";
   });
+}
+
+function prepareMenu() {
+  const nav = document.querySelector("nav");
+  const navBtn = document.querySelector("#top-bar button");
+  prepareNavBtns();
+  navBtn.addEventListener("click", () => {
+    if (nav.dataset.status === "closed") {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+
+  function prepareNavBtns() {
+    nav.querySelectorAll(".navpoints").forEach((navpoint) => {
+      navpoint.addEventListener("click", closeMenu);
+    });
+  }
+
+  function openMenu() {
+    console.log(" 🐷");
+    nav.classList.toggle("open");
+    nav.dataset.status = "open";
+    navBtn.classList.toggle("open");
+  }
+  function closeMenu() {
+    console.log(" 🐷");
+    nav.classList.toggle("open");
+    nav.dataset.status = "closed";
+    navBtn.classList.toggle("open");
+  }
 }
