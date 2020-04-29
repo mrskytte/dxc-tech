@@ -62,6 +62,10 @@
     flex-direction: column;
     margin-bottom: 6em;
 
+    ::placeholder {
+      opacity: 0.2;
+    }
+
     #description,
     label {
       display: flex;
