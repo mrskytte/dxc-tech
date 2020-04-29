@@ -1,13 +1,21 @@
 @use '../base-style/colors';
 
-#index-body {
+#bg-image {
   background-image: url("images/dxc_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 660px;
-  width: auto;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -2;
 }
-
+#shade {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: transparentize($color: colors.$secondary, $amount: 0.3);
+}
 #logo {
   background-color: colors.$secondary;
   padding: 0.6em;
@@ -23,6 +31,7 @@
 
   // height: 90vh;
   #first {
+    height: 100vh;
     display: grid;
     grid-template-areas:
       "title form"
@@ -38,40 +47,35 @@
 
   h1 {
     margin-top: auto;
-    color: colors.$primary;
+    color: colors.$accent;
     grid-area: title;
     font-size: 26px;
-    width: 70%;
+    width: 90%;
     line-height: 1.5em;
   }
   h2 {
     grid-area: subtitle;
-    color: colors.$accent;
-    width: 60%;
+    color: colors.$primary;
+    width: 90%;
     font-size: 26px;
     line-height: 1.5em;
-  }
-
-  h5 {
-    font-size: 16px;
   }
 
   form {
     grid-area: form;
     margin: auto;
-    margin-top: 5em;
-    justify-content: center;
-    height: 90vh;
-    width: 80%;
+    height: 80%;
+    width: 90%;
+    padding: 3em 2em 1em 1em;
     background-color: colors.$form;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin-bottom: 6em;
-
+    border-radius: 5px;
     ::placeholder {
       opacity: 0.2;
     }
-
     #description,
     label {
       display: flex;
@@ -115,13 +119,16 @@
 
     #submit-btn {
       width: 40%;
-      margin-left: 6em;
-      margin-right: 6em;
+      margin: auto;
       background-color: colors.$accent;
       font-size: 16px;
     }
     #check {
-      margin-bottom: 6em;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 65%;
+      margin-bottom: 1em;
     }
   }
   #quote {
@@ -133,12 +140,11 @@
 }
 
 #second {
-  margin-top: 150px;
-
-  .weprovide {
-    text-align: center;
-    font-size: 30px;
-  }
+  margin: 5em auto 5em auto;
+}
+.weprovide {
+  text-align: center;
+  font-size: 30px;
 }
 
 #weprovide {
@@ -147,7 +153,6 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
   .keypoints {
-    height: 15vh;
     width: 80%;
     line-height: 2em;
     .icon {
@@ -159,10 +164,12 @@
 }
 
 #third {
-  margin-top: 220px;
+  margin-top: 0;
   margin-bottom: 200px;
 }
-
+.weprovide {
+  margin-bottom: 2em;
+}
 #testimonials {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -170,28 +177,27 @@
 
   #triangle {
     width: 600px;
-    grid-column: auto / span 3;
-    margin-left: -9.6em;
     height: auto;
-    border-top: 100px solid transparent;
-    border-bottom: 100px solid transparent;
+    border-top: 150px solid transparent;
+    border-bottom: 150px solid transparent;
     border-left: 200px solid black;
-    position: relative;
+    position: absolute;
+    left: 0;
+    transform: translateY(-10em);
   }
 
   .keypoints {
-    height: 15vh;
     width: 80%;
     line-height: 2em;
   }
   .person {
     width: 120px;
-    margin-bottom: 40px;
-    margin-left: 20px;
+    margin: auto;
+    margin-bottom: 20px;
   }
 
   .who {
     margin-top: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
   }
 }

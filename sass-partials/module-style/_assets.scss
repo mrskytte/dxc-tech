@@ -1,11 +1,12 @@
 @use '../base-style/colors';
 
 #asset-body {
+  scroll-behavior: smooth;
   position: relative;
   display: flex;
   height: 100vh;
-  scroll-behavior: smooth;
 }
+
 #top-bar {
   display: none;
 }
@@ -109,6 +110,11 @@ nav {
   padding: 5em 12vw;
   margin: auto;
   border-top: 2.5em solid colors.$secondary;
+  footer {
+    width: calc(100% + 24vw);
+    margin-top: 2em;
+    margin-left: -12vw;
+  }
   h1 {
     font-size: 4.5em;
     margin-bottom: 0.3em;
@@ -146,6 +152,7 @@ nav {
       margin-bottom: 1.5em;
     }
   }
+
   ul {
     padding: 0;
     margin-top: 0em;

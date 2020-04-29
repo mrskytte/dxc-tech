@@ -1,11 +1,13 @@
+@use '../base-style/colors';
 footer {
+  background-color: colors.$secondary;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  padding: 0 5vw;
   align-items: center;
-  width: 80vw;
-  height: 8vh;
-  #footer-text {
-    margin: 0 auto;
-  }
+  width: 100vw;
+  height: 10vh;
+  color: colors.$primary;
+  font-size: 0.8em;
 }
