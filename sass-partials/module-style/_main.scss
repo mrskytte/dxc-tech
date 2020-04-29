@@ -1,6 +1,6 @@
 @use '../base-style/colors';
 
-body {
+#index-body {
   background-image: url("images/dxc_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,7 +17,7 @@ body {
   height: 2.5em;
 }
 
-main {
+#index-main {
   margin-left: 160px;
   margin-right: 160px;
 
@@ -76,6 +76,7 @@ main {
       border: none;
       border-radius: 0.5em;
       height: 3em;
+      padding-left: 1em;
     }
 
     hr {
