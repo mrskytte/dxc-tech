@@ -15,7 +15,7 @@ window.addEventListener("load", init);
 
 function init() {
   if (checkLocalStorage()) {
-    // sendToAssetPage();
+    sendToAssetPage();
     return;
   }
   getUserData();
@@ -45,6 +45,7 @@ function storeUserData(users) {
     const thisUser = {
       name: user.firstname,
       email: user.email,
+      _id: user._id,
     };
     userData.push(thisUser);
     console.log(userData);
@@ -71,14 +72,14 @@ function checkLocalStorage() {
 
 //      CHECK FORM ENTRIES VALIDITY
 
-const formIsValid = form.checkValidity();
-if (formIsValid) {
-  console.log("Submit ready");
-} else {
-  if (!form.elements.firstname.checkValidity()) {
-    console.log("First name is invalid");
-  }
-}
+// const formIsValid = form.checkValidity();
+// if (formIsValid) {
+//   console.log("Submit ready");
+// } else {
+//   if (!form.elements.firstname.checkValidity()) {
+//     console.log("First name is invalid");
+//   }
+// }
 
 //      SPLIT NAME INTO FIRST AND LAST NAME
 
@@ -96,10 +97,7 @@ function checkEmailInput(thisEmail) {
   let isPresent = userData.find((e) => e.email === thisEmail.target.value);
   console.log(isPresent);
   if (isPresent) {
-    setLocalStorageAuth();
-    console.log("Email exists in database");
-    // INSERT FUNCTION THE SEND WELCOME USER BACK
-    console.log(`Welcome back ${isPresent.name}`);
+    setLocalStorageAuth(isPresent._id);
   }
 }
 //      CREATE AN OBJECT MATCHING OUR DATABASE TO STORE THE FORM DATA
@@ -111,6 +109,7 @@ function storeData() {
     company: form.elements.company.value,
     jobtitle: form.elements.jobtitle.value,
     country: form.elements.country.value,
+    visits: 0,
   };
 }
 
@@ -141,6 +140,7 @@ function sendToAssetPage() {
   console.log("Send to asset page");
 }
 
-function setLocalStorageAuth() {
+function setLocalStorageAuth(id) {
   localStorage.setItem("auth", "true");
+  localStorage.setItem("userID", id);
 }
