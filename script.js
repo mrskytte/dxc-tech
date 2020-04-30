@@ -15,10 +15,10 @@ window.elements = elements;
 window.addEventListener("load", init);
 
 function init() {
-  // if (checkLocalStorage()) {
-  //   sendToAssetPage();
-  //   return;
-  // }
+  if (checkLocalStorage()) {
+    sendToAssetPage();
+    return;
+  }
   getUserData();
   prepareEmailInput();
 }
@@ -144,7 +144,7 @@ async function postUsers(payload) {
 }
 
 function sendToAssetPage() {
-  console.log("Send to asset page");
+  window.location = "assets.html";
 }
 
 function setLocalStorageAuth(id) {
