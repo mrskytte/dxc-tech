@@ -129,6 +129,10 @@
       background-color: colors.$accent;
       font-size: 16px;
       cursor: pointer;
+      box-shadow: 1px 1.5px 1px 1px rgba(0, 0, 0, 0.2);
+      &:hover {
+        box-shadow: 2px 4px 1px 1px rgba(0, 0, 0, 0.2);
+      }
       &.loading {
         border-radius: 0;
         border-radius: 50%;
