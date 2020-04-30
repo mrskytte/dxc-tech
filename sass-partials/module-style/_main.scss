@@ -128,7 +128,23 @@
       margin: auto;
       background-color: colors.$accent;
       font-size: 16px;
+      cursor: pointer;
+      &.loading {
+        border-radius: 0;
+        border-radius: 50%;
+        width: 50px;
+        background-color: transparent;
+        border: 10px solid colors.$secondary;
+        border-top: 10px solid colors.$accent;
+        animation: spin 2s infinite forwards;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     }
+
     #check {
       flex-direction: row;
       align-items: center;

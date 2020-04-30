@@ -97,10 +97,20 @@ function hideMailWarning() {
   document.querySelector("#warning").dataset.valid = "true";
 }
 
-document.querySelector("[type=submit]").addEventListener("click", storeData);
+document
+  .querySelector("[type=submit]")
+  .addEventListener("click", checkValidity);
+
+function checkValidity() {
+  if (form.checkValidity()) {
+    storeData();
+  } else {
+    console.log("not valid");
+  }
+}
 
 function storeData() {
-  console.log(" 🐷");
+  showLoad();
   let fullname = splitName();
   const payload = {
     firstname: fullname[0],
@@ -112,6 +122,11 @@ function storeData() {
     visits: 0,
   };
   postUsers(payload);
+}
+
+function showLoad() {
+  document.querySelector("[type=submit]").classList.add("loading");
+  document.querySelector("[type=submit]").value = "";
 }
 
 function splitName() {
@@ -139,8 +154,8 @@ async function postUsers(payload) {
     body: postData,
   });
   const response = await data.json();
-  console.log(response);
   setLocalStorageAuth(response._id);
+  sendToAssetPage();
 }
 
 function sendToAssetPage() {
